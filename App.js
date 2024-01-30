@@ -10,12 +10,14 @@ import {
   BalsamiqSans_400Regular_Italic,
 } from '@expo-google-fonts/balsamiq-sans';
 import { Provider } from 'react-redux';
+import { useSelector } from "react-redux";
 
 import { createStore } from 'redux';
 import AyoHotel from "./config/reducers";
 
 // Import Container
 import Container from "./container";
+
 
 export default function App() {
   const store = createStore(AyoHotel);

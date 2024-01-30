@@ -1,21 +1,22 @@
 import {StyleSheet, View, Text } from 'react-native';
+import { Box } from "native-base";
 
 const dashboard = () => {
     return (
-        <View style={styles.container} className="login-container">
-            <Text className="login-text">
-                asu
-            </Text>
+        <View style={styles.container}>
+            <Box>
+            <Text>
+Dashboard            </Text>
+            </Box>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
-      display:'flex',
-      width:'100%',
+      flex:1,
       backgroundColor:'red',
-      height: '100%',
+      color:'black'
     },
   });
 

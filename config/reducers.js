@@ -7,7 +7,7 @@ const INITIAL_STATE = {
     'Bob',
     'Sammy',
   ],
-  isLogin:false
+  isLogin:true
 };
 
 const AyoHotelReducer = (state = INITIAL_STATE, action) => {
