@@ -11,7 +11,6 @@ import { isLogin } from '../../config/action';
 
 
   const Field = ({navigation}) => {
-    const dispatch = useDispatch();
     const [show, setShow] = React.useState(false);
     const [email, onChangeEmail] = React.useState('');
     const [password, onChangePassword] = React.useState('');
@@ -36,8 +35,7 @@ import { isLogin } from '../../config/action';
       }
 
       const onSubmit = () => {
-        dispatch(isLogin(true))
-        navigation.navigate('dashboard')
+        navigation.navigate('login')
       }
     return (
     <View>
@@ -45,26 +43,42 @@ import { isLogin } from '../../config/action';
         <Input w={{
         base: "75%",
         md: "25%"
-      }} _light={light} style={{color:'black'}} _dark={dark} name='email' onChange={onChangeEmail} value={email} InputLeftElement={<Icon as={<MaterialIcons name="person" />} size={5} ml="2" color="muted.400" />} placeholder="Name" />
+      }} _light={light} style={{color:'black'}} _dark={dark} name='name' onChange={onChangeEmail} value={email} InputLeftElement={<Icon as={<MaterialIcons name="person" />} size={5} ml="2" color="muted.400" />} placeholder="Name" />
+        <Input w={{
+        base: "75%",
+        md: "25%"
+      }} _light={light} style={{color:'black'}} _dark={dark} name='email' onChange={onChangeEmail} value={email} InputLeftElement={<Icon as={<MaterialIcons name="person" />} size={5} ml="2" color="muted.400" />} placeholder="Email" />
+
         <Input w={{
         base: "75%",
         md: "25%"
       }} _light={light} style={{color:'black'}} _dark={dark}  name='password' onChange={onChangePassword} value={password} type={show ? "text" : "password"} InputRightElement={<Pressable onPress={() => setShow(!show)}>
               <Icon as={<MaterialIcons name={show ? "visibility" : "visibility-off"} />} size={5} mr="2" color="muted.400" />
             </Pressable>} placeholder="Password" />
+         <Input w={{
+        base: "75%",
+        md: "25%"
+      }} _light={light} style={{color:'black'}} _dark={dark}  name='confirmPassword' onChange={onChangePassword} value={password} type={show ? "text" : "password"} InputRightElement={<Pressable onPress={() => setShow(!show)}>
+              <Icon as={<MaterialIcons name={show ? "visibility" : "visibility-off"} />} size={5} mr="2" color="muted.400" />
+            </Pressable>} placeholder="Confirm Password" />
+        <Input w={{
+        base: "75%",
+        md: "25%"
+      }} _light={light} style={{color:'black'}} _dark={dark} name='noKtp' onChange={onChangeEmail} value={email} InputLeftElement={<Icon as={<MaterialIcons name="person" />} size={5} ml="2" color="muted.400" />} placeholder="No.KTP" />
+
       </Stack>
       <Stack space={4} w="100%" alignItems="center"  style={{marginTop:20}}> 
         <Button w={{
         base: "75%",
         md: "25%"
         }} onPress={()=>onSubmit()}>
-            login
+            Register
         </Button>
       </Stack>
       </View>)
   };
 
-const Login = ({navigation}) => {
+const Register = ({navigation}) => {
     return (
         <View style={styles.container}>
             <Image source={logo} style={styles.logo} />
@@ -73,11 +87,6 @@ const Login = ({navigation}) => {
                 <Stack style={styles.input} space={4} w="75%" maxW="300px" mx="auto">
                     <Field navigation={navigation}/>
                 </Stack>
-            </View>
-            <View style={{ flex: 1, alignItems: 'center' }}>
-                <Text style={{ margin: 10 }}>Lupa kata sandi?</Text>
-                <Text style={{ margin: 10 }}>Belum punya akun?</Text>
-                <Text style={{ margin: 10 }} onPress={()=>navigation.navigate('register')}>Buat akun</Text>
             </View>
         </View>
     );
@@ -105,4 +114,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Login;
+export default Register;

@@ -1,6 +1,6 @@
 import React from "react";
 // Import 'NativeBaseProvider' component
-import { NativeBaseProvider, extendTheme, NativeBaseConfigProvider, Box } from "native-base";
+import { NativeBaseProvider, extendTheme } from "native-base";
 
 // Import font with Expo
 import AppLoading from 'expo-app-loading';

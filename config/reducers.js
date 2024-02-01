@@ -7,7 +7,7 @@ const INITIAL_STATE = {
     'Bob',
     'Sammy',
   ],
-  isLogin:true
+  isLogin:false
 };
 
 const AyoHotelReducer = (state = INITIAL_STATE, action) => {
@@ -15,7 +15,7 @@ const AyoHotelReducer = (state = INITIAL_STATE, action) => {
     case 'ISLOGIN':
         return {
             ...state,
-            isLogin:true
+            isLogin:action.value
         }
     default:
       return state;

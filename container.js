@@ -3,8 +3,11 @@ import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Login from './pages/Auth/login';
+import Register from './pages/Auth/register';
 import { useSelector } from "react-redux";
 import Views from './router/index'
+import { useNavigation } from '@react-navigation/native';
+import { useEffect } from 'react';
 
 const CustomHeader = ({ title, navigation }) => (
   <View style={{ flexDirection: 'row', height: 60, backgroundColor: '#3498db', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 16 }}>
@@ -39,13 +42,20 @@ const SettingsScreen = ({ navigation }) => (
 
 const Stack = createNativeStackNavigator();
 
-const Container = () => {
-    let login = true
-    const isLogin = useSelector(({ AyoHotel}) => AyoHotel.isLogin);
+const Route = () => {
+  let login = true
+  const isLogin = useSelector(({ AyoHotel}) => AyoHotel.isLogin);
+  const navigation = useNavigation();
 
-    return (
-      <NavigationContainer>
-            {isLogin ? 
+  useEffect(() => {
+    if(!isLogin){
+      navigation.navigate('login');
+    }
+  }, []);
+
+  return (
+    <>
+               {isLogin ? 
             (
               <Stack.Navigator      
               screenOptions={{
@@ -63,9 +73,17 @@ const Container = () => {
             : (
               <Stack.Navigator>
                 <Stack.Screen name='login' component={Login} options={{headerShown: false}}/>
+                <Stack.Screen name='register' component={Register} options={{headerShown: false}}/>
               </Stack.Navigator>
-            )}
-            </NavigationContainer>
+            )}</>
+  )
+}
+
+const Container = () => {;
+    return (
+      <NavigationContainer>
+        <Route/>
+      </NavigationContainer>
     );
 }
 
